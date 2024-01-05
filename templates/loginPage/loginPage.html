@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BU_Chatbot - Login</title>
+    <link rel="stylesheet" href="../../static/loginPage/css/loginPageStyle.css">
+    <style>
+        /* ... existing styles ... */
+  
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <!-- BU Logo -->
+            <div class="bu-logo">
+                <img src="../../static/Images/recurringImages/Babcock-University 2.png" alt="BU Logo">
+                <span><a href="#">Create Account</a></span>
+            </div>
+        </header>
+
+        <main>
+            <header>
+                <h1>Sign In</h1>
+            </header>
+
+            <!-- Sign In Form -->
+            <section class="form-section">
+                <h2><span class="underlined-text">Sign In details</span></h2>
+
+                <div class="form-text-box">
+                    <input type="email" placeholder="Email Address or Username">
+                </div>
+
+                <div class="form-text-box">
+                    <input type="passworsd" id="passwordField" placeholder="Password">
+                    <span class="password-toggle" onclick="togglePasswordVisibility('passwordField')">👁️</span>
+                </div>
+            </section>
+
+            <!-- Button and Sign In -->
+            <footer>
+                <a href="#">Forgot Password?</a>
+                <span><button><a href="#">Sign In</a></button></span>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../../static/loginPage/js/passwordToggle.js"></script>
+</body>
+</html>

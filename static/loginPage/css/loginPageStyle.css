@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../../Satoshi_Complete/Fonts/Variable/Satoshi-Variable.ttf') format('truetype');
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3em;
+    border-radius: 20px;
+}
+
+body {
+    height: 100dvh;
+    margin: 0 2em 0 2em;
+}
+
+.bu-logo {
+    width: 100%;
+    padding: 4em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bu-logo a {
+    color: #020167;
+}
+
+.bu-logo img {
+    display: block;
+    margin: 0 auto;
+}
+
+.underlined-text {
+    display: inline-block;
+    border-bottom: 2px solid black;
+    margin: 1em 0 2em 0;
+}
+
+.form-text-box {
+    position: relative;
+}
+
+.form-text-box input {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2em;
+    padding: 2em 0;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.form-text-box input::placeholder {
+    margin-left: 10px; /* Adjusted margin-left */
+}
+
+.form-text-box .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+a {
+    color: #020167;
+    font-family: Satoshi;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+}
+
+h1 {
+    color: #070707;
+    font-family: Satoshi;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+h2 {
+    color: #070707;
+    font-family: Satoshi;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+button {
+    border-radius: 8px;
+    background: #020167;
+    padding: 0.938em 1.563em;
+}
+
+button a {
+    color: #F2F2F6;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.form-text-box input::placeholder {
+    padding: 2em;
+}
+
+@media only screen and (min-width: 1200px) {
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper {
+        background-color: rgb(247, 247, 247);
+        width: 1000px;
+        margin: 0 auto;
+        padding: 3em;
+        border-radius: 20px;
+    }
+}

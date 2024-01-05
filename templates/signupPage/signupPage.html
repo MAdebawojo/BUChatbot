@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/signupPage/css/customCheckbox.css">
+    <link rel="stylesheet" href="../../static/signupPage/css/customRadioButton.css">
+
+    <style type="text/css">
+        @font-face 
+        {
+            font-family: 'Satoshi';
+            src: url('../../Satoshi_Complete/Fonts/Variable/Satoshi-Variable.ttf') format('truetype'); /* Replace with the actual path to your font file */
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            /* background-color: pink; */
+            font-family: 'Satoshi';
+            /* font-size: 1rem; */
+            margin: 0 2em 0 2em;
+        }
+
+        .underlined-text {
+            display: inline-block;
+            border-bottom: 2px solid black; /* Color of the underline */
+            margin: 1em 0 2em 0;
+        }
+        /* input::placeholder {
+            margin: 1em;
+        } */
+        .bu-logo
+        {
+            width: 100%;
+            padding: 4em 0;
+            /* height: 15dvh; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* background-color: pink; */
+            /* margin: 0 auto; */
+            /* align-items: center; */
+        }
+        .bu-logo img
+        {
+            /* width: 39px;
+            height: 41px; */
+           
+            /* margin: 0 auto; */
+        }
+        .form-text-box {
+            position: relative;
+        }
+        .form-text-box .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 40%;
+            /* left: %; */
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        h1
+        {
+            color: hsl(0, 0%, 3%);
+            font-family: Satoshi;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            /* width: 150%; */
+            /* background-color: red; */
+        }
+        h2
+        {
+            color: #070707;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-top: 3em;
+        }
+        h3
+        {
+            color: #070707;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-bottom: 1em;
+        }
+        main
+        {
+            /* background-color: red; */
+        }
+        .form-text-box input, select
+        {
+            width: 100%;
+            margin-bottom: 2em;
+            padding: 2em 0;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+        .form-text-box input::placeholder
+        {
+            padding: 2em;
+        }
+        .flex-rad-btn
+        {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+        .btn-flex
+        {
+            /* display: flex;
+            justify-content: flex-end; */
+            /* background-color: pink; */
+            text-align: right;
+            padding: 3em 0;
+        }
+        button 
+        {
+            border-radius: 8px;
+            background: #020167;
+            padding: 0.938em 1.563em;
+        }
+
+        a 
+        {
+            color: #F2F2F6;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration: none;
+        }
+        a:hover {
+    text-decoration: underline;
+}
+        @media only screen and (min-device-width: 759px){
+    /* insert styles here */
+}
+    </style>
+</head>
+<body>
+    <!-- BU Logo -->
+    <section class="bu-logo">
+        <img src="../../static/Images/recurringImages/Babcock-University 2.png" alt="BU Logo">
+    </section>
+    
+    <!-- Main Section -->
+    <main>
+        <h1>Let's start by creating your <br>account</h1>
+
+        <!-- Email and Password Section -->
+        <section class="form-section">
+            <h2><span class="underlined-text">Email Address and Password</span></h2>
+        
+            <div class="form-text-box">
+                <input type="email" placeholder="Email Address">
+            </div>
+
+            <div class="form-text-box">
+                <input type="password" id="passwordField" placeholder="Password" oninput="checkPasswordCriteria()">
+                <span class="password-toggle" onclick="togglePasswordVisibility('passwordField')">👁️</span>
+            </div>
+
+            <label class="container">
+                At least one (1) uppercase character
+                <input type="checkbox" id="uppercaseCheckbox" disabled>
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container">
+                At least one (1) lowercase character
+                <input type="checkbox" id="lowercaseCheckbox" disabled>
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container">
+                At least one (1) special character
+                <input type="checkbox" id="specialCharCheckbox" disabled>
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container">
+                At least one (1) number
+                <input type="checkbox" id="numberCheckbox" disabled>
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container">
+                At least eight (8) characters
+                <input type="checkbox" id="lengthCheckbox" disabled>
+                <span class="checkmark"></span>
+            </label>
+        </section>
+
+        <!-- School Information Section -->
+        <section class="form-section">
+            <h2><span  class="underlined-text">School Information</span></h2>
+        
+            <!-- School Name -->
+            <label class="form-text-box">
+                <h3>School:</h3>
+                <select>
+                    <option>School of Computing and Engineering Sciences</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>              
+            </label>
+
+            <!-- Department Name -->
+            <label class="form-text-box">
+                <h3>Department:</h3>
+                <select>
+                    <option>Computer Science</option>
+                    <option>Computer Information Systems</option>
+                    <option>Software Engineering</option>
+                    <option>Computer Technology</option>
+                    <option>Information Technology</option>
+                  </select> 
+            </label>
+        
+            <!-- Level -->
+            <div class="level">
+                <h3>Level:</h3>
+                <div class="flex-rad-btn">
+                    <label class="custom-radio"> 100 Level
+                        <input type="radio" checked="checked" name="custom-radio">
+                        <span class="custom-radio-checkmark"></span>
+                      </label>
+                      
+                      <label class="custom-radio"> 200 Level
+                        <input type="radio" name="custom-radio">
+                        <span class="custom-radio-checkmark"></span>
+                      </label>
+                      
+                      <label class="custom-radio"> 300 Level
+                        <input type="radio" name="custom-radio">
+                        <span class="custom-radio-checkmark"></span>
+                      </label>
+                </div>
+                
+                <div class="flex-rad-btn">
+                    <label class="custom-radio"> 400 Level
+                        <input type="radio" name="custom-radio">
+                        <span class="custom-radio-checkmark"></span>
+                      </label>
+                      
+                      <label class="custom-radio"> 500 Level
+                          <input type="radio" name="custom-radio">
+                          <span class="custom-radio-checkmark"></span>
+                      </label>
+                      
+                      <label class="custom-radio"> 600 Level
+                          <input type="radio" name="custom-radio">
+                          <span class="custom-radio-checkmark"></span>
+                      </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Information Section -->
+        <section class="form-section">
+            <h2><span  class="underlined-text">Personal Information</span></h2>
+            <div class="form-text-box">
+                <h3>Username:</h3>
+                <input type="text" placeholder="Enter Username">
+            </div>
+        </section>
+
+        <div class="btn-flex">
+            <button><a href="#">Finish</a></button>
+        </div>
+
+        
+    </main>
+    <script src="../../static/loginPage/js/passwordToggle.js"></script>
+
+    <script>
+        function checkPasswordCriteria() {
+            // Get the password input element
+            const passwordField = document.getElementById('passwordField');
+
+            // Check the criteria and update checkboxes accordingly
+            document.getElementById('uppercaseCheckbox').checked = /[A-Z]/.test(passwordField.value);
+            document.getElementById('lowercaseCheckbox').checked = /[a-z]/.test(passwordField.value);
+            document.getElementById('specialCharCheckbox').checked = /[^A-Za-z0-9]/.test(passwordField.value);
+            document.getElementById('numberCheckbox').checked = /\d/.test(passwordField.value);
+            document.getElementById('lengthCheckbox').checked = passwordField.value.length >= 8;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>Custom Checkboxes</h1>
+<label class="container">One
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Two
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Three
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Four
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label> -->
