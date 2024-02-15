@@ -60,13 +60,10 @@ body {
 .form-text-box input::placeholder {
     margin-left: 10px; /* Adjusted margin-left */
 }
-
-.form-text-box .password-toggle {
-    position: absolute;
-    right: 10px;
-    top: 40%;
-    transform: translateY(-50%);
-    cursor: pointer;
+.bu-logo
+{
+    width: 1440px;
+    height: 1024px;
 }
 
 a {

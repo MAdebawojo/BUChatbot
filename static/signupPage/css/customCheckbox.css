@@ -1,11 +1,12 @@
     /* The container */
     .container {
         display: block;
+        /* flex-direction: row; */
         position: relative;
         padding-left: 35px;
         margin-bottom: 12px;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 1em;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;

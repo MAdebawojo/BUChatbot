@@ -1,0 +1,173 @@
+@font-face 
+{
+    font-family: 'Satoshi';
+    src: url('../../../Satoshi_Complete/Fonts/Variable/Satoshi-Variable.ttf') format('truetype'); /* Replace with the actual path to your font file */
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.mobile-view body
+{
+    /* background-color: pink; */
+    font-family: 'Satoshi';
+    /* font-size: 1rem; */
+    margin: 0 2em 0 2em;
+}
+
+@media only screen and (max-width: 1099px) {
+    .mobile-view .underlined-text {
+    display: inline-block;
+    border-bottom: 2px solid black; /* Color of the underline */
+    margin: 1em 0 2em 0;
+}
+/* input::placeholder {
+    margin: 1em;
+} */
+.mobile-view .bu-logo
+{
+    width: 100%;
+    padding: 4em 0;
+    /* height: 15dvh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: pink; */
+    /* margin: 0 auto; */
+    /* align-items: center; */
+}
+.mobile-view .bu-logo img
+{
+    /* width: 80px;
+    height: 80px; */
+   
+    /* margin: 0 auto; */
+
+    /* background-color: red; */
+}
+.mobile-view .form-text-box {
+    position: relative;
+}
+.mobile-view .form-text-box .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    /* left: %; */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.mobile-view h1
+{
+    color: hsl(0, 0%, 3%);
+    font-family: Satoshi;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    /* width: 150%; */
+    /* background-color: red; */
+}
+.mobile-view h2
+{
+    color: #070707;
+    font-family: Satoshi;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 3em;
+}
+.mobile-view h3
+{
+    color: #070707;
+    font-family: Satoshi;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 1em;
+}
+.mobile-view main
+{
+    /* background-color: red; */
+}
+.mobile-view .form-text-box input, .mobile-view select
+{
+    width: 100%;
+    margin-bottom: 2em;
+    padding: 2em 0;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+.mobile-view .form-text-box input::placeholder
+{
+    padding: 2em;
+}
+.mobile-view .flex-rad-btn
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+.mobile-view .btn-flex
+{
+    /* display: flex;
+    justify-content: flex-end; */
+    /* background-color: pink; */
+    text-align: right;
+    padding: 3em 0;
+}
+.mobile-view button 
+{
+    border-radius: 8px;
+    background: #020167;
+    padding: 0.938em 1.563em;
+}
+
+.mobile-view a 
+{
+    color: #F2F2F6;
+    font-family: Satoshi;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+@media only screen and (min-width: 1100px){
+    .wrapper
+    {
+        /* background-color: red; */
+    }
+    body
+    {
+        /* height: 100dvh; */
+    }
+    .bu-logo img
+    {
+        width: 200px;
+        height: 200px;
+        /* display: none; */
+    }
+    main h1
+    {
+        color: #070707;
+        text-align: center;
+        font-family: Satoshi;
+        font-size: 2.25rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    main br 
+    {
+        display: none;
+    }
+}
+}
