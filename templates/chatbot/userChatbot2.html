@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/chatbot/userChatbot/css/styles.css">
+    <style type="text/css">
+        
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="sidebar">
+            <div class="new-chat-btn">
+                <p>New Chat</p>
+            </div>
+            <div class="recent-chats">
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+                <p style="color: white;">Hey</p>
+            </div>
+            <div class="settings">
+                <div class="user-circle">AD</div>
+                <p class="username">Mosopefoluwa Adebawojo</p>
+            </div>
+        </section>
+        <section class="main-bar">
+            <div class="top-section">
+                <img src="../../static/Images/recurringImages/Babcock-University 2.png" >
+                <p>BU_Chatbot</p>
+            </div>
+            <!-- <div chat-area-container> -->
+                <div class="chat-area" id="chatArea"></div>
+            <!-- </div> -->
+            <!-- <div class="input-box">
+                <textarea class="text-input" id="userInput" placeholder="Type your message..."></textarea>
+            </div> -->
+            <div class="textarea-container">
+                <textarea id="resizableTextarea" placeholder="Ask me anything..."></textarea>
+                <img src="../../static/chatbot/userChatbot/img/Hicon/Linear/Vector.svg" class="text-input">
+            </div>
+        </section>
+    </div>
+
+    <script>
+         // Function to add a new message to the chat area
+    function addMessage(sender, message) {
+        const chatArea = document.getElementById('chatArea');
+
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+        messageElement.classList.add('message-style')
+        // Create a logo and label container
+        const logoLabelContainer = document.createElement('div');
+        logoLabelContainer.classList.add('logo-label-container');
+
+        // Create a logo element
+        const logoElement = document.createElement('div');
+        logoElement.classList.add('chatarea-logo');
+        // Set the source of the logo based on the sender
+        if (sender === 'user') {
+            // If the sender is the user, use the user-circle div
+            logoElement.classList.add('chatarea-user-circle');
+            logoElement.textContent = 'AD';
+        } else {
+            // If the sender is BuBot, use an image
+            const bubotLogo = document.createElement('img');
+            bubotLogo.src = '../../static/Images/recurringImages/Babcock-University 2.png'; 
+            bubotLogo.width = 30;
+            bubotLogo.height = 30;
+            logoElement.appendChild(bubotLogo);
+        }
+
+        // Create a label element
+        const labelElement = document.createElement('div');
+        labelElement.classList.add('logo-label');
+        labelElement.textContent = sender === 'user' ? 'You' : 'BuBot';
+
+        // Append logo and label to the container
+        logoLabelContainer.appendChild(logoElement);
+        logoLabelContainer.appendChild(labelElement);
+
+        // Append the logo and label container to the message element
+        // messageElement.appendChild(logoLabelContainer);
+
+        // Create a text content element for the message text
+        const textContentElement = document.createElement('div');
+        textContentElement.classList.add('text-content');
+        textContentElement.textContent = message;
+
+        // Append text content to the message element
+        messageElement.appendChild(textContentElement);
+
+        chatArea.appendChild(logoLabelContainer)
+        chatArea.appendChild(messageElement);
+
+        // Scroll to the bottom to show the latest message
+        chatArea.scrollTop = chatArea.scrollHeight;
+    }
+
+    // Example usage
+    addMessage('user', 'Hello, how can I help you today?');
+    addMessage('bot', 'Hi! I\'m here to assist you.');
+
+
+    function submitChat() {
+        const textarea = document.getElementById('resizableTextarea');
+        const chatArea = document.getElementById('chatArea');
+
+        // Get the content of the textarea
+        const message = textarea.value.trim();
+
+        // Check if the message is not empty
+        if (message !== "") {
+            // Add the user's message to the chat area
+            addMessage('user', message);
+
+            // Simulate a bot response (replace this with actual logic)
+            const botResponse = "I received your message. How can I assist you?";
+            // Add the bot's response to the chat area after a short delay
+            setTimeout(() => {
+                addMessage('bot', botResponse);
+            }, 500); // Adjust the delay as needed
+
+            // Clear the textarea after submitting
+            textarea.value = "";
+        }
+    }
+
+
+        // Attach the submitChat function to the click event of the submit image
+        document.querySelector('.text-input').addEventListener('click', submitChat);
+
+
+
+
+        //auto grow textarea
+        const textarea = document.getElementById('resizableTextarea');
+
+        textarea.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+
+            // Set a maximum height to the textarea
+            const maxHeight = 200;
+            if (this.scrollHeight > maxHeight) {
+                this.style.overflowY = 'scroll';
+                this.style.height = maxHeight + 'px';
+            } else {
+                this.style.overflowY = 'hidden';
+            }
+        });
+
+        // Set initial height
+        textarea.style.height = '100px';
+    </script>
+</body>
+</html>

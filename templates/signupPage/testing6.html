@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sign-Up Page</title>
+    <link rel="stylesheet" href="../../static/signupPage/css/customCheckbox.css">
+    <link rel="stylesheet" href="../../static/signupPage/css/customRadioButton.css">
+
+    <style>
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('../../Satoshi_Complete/Fonts/Variable/Satoshi-Variable.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Satoshi';
+            margin: 0 2em 0 2em;
+        }
+
+        .bu-logo {
+            width: 100%;
+            padding: 4em 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bu-logo img {
+            /* width: 39px;
+            height: 41px; */
+        }
+
+        .form-text-box {
+            position: relative;
+        }
+
+        .form-text-box .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 40%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        h1 {
+            color: hsl(0, 0%, 3%);
+            font-family: Satoshi;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        h2 {
+            color: #070707;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-top: 3em;
+        }
+
+        h3 {
+            color: #070707;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-bottom: 1em;
+        }
+
+        main {
+            /* background-color: red; */
+        }
+
+        .form-text-box input,
+        select {
+            width: 100%;
+            margin-bottom: 2em;
+            padding: 2em 0;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+
+        .form-text-box input::placeholder {
+            padding: 2em;
+        }
+
+        .flex-rad-btn {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        .btn-flex {
+            text-align: right;
+            padding: 3em 0;
+        }
+
+        button {
+            border-radius: 8px;
+            background: #020167;
+            padding: 0.938em 1.563em;
+        }
+
+        a {
+            color: #F2F2F6;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Multi-Step Styles */
+        .multistep {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+            list-style: none;
+            padding: 0;
+            position: relative;
+        }
+
+        .step {
+            flex: 1;
+            font-weight: 500;
+            color: #888;
+        }
+
+        .step.active {
+            color: black;
+            font-weight: bold;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            width: calc(100% - 20px);
+            height: 2px;
+            background-color: #ddd;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wrapper {}
+
+        body {
+            font-family: 'Satoshi';
+            margin: 0 2em;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bu-logo img {
+            width: 200px;
+            height: 200px;
+        }
+
+        main h1 {
+            color: #070707;
+            text-align: center;
+            font-family: Satoshi;
+            font-size: 2.25rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        main br {
+            display: none;
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        h2 {
+            color: #888;
+            margin: 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .section-heading h2 {
+            margin-right: 10px;
+            color: #888;
+            font-size: 1.5rem;
+        }
+
+        .hr-line {
+            border-top: 2px solid #888;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .underlined-text {
+            display: inline-block;
+            border-bottom: 2px solid #ccc;
+            margin-top: 2em;
+            margin-bottom: -1em;
+            transition: border-color 0.3s;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+        .active .section-heading h2,
+        .active .underlined-text {
+            color: black !important;
+            font-weight: bold;
+            border-color: black;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3em;
+        }
+
+        button {
+            padding: 1em 2em;
+            background-color: #020167;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            margin-bottom: 2em;
+            padding: 2em 0;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+
+        ol {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        ol li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 2em auto;
+        }
+
+        .form-group input::placeholder {
+            padding: 1em;
+        }
+
+        .checkbox {
+            display: flex;
+            gap: 3em;
+            font-size: 1.2rem;
+        }
+
+        .checkbox-group {
+            display: block;
+        }
+
+        .flex-rad-btn {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8.6em;
+        }
+
+        label {
+            font-size: 1.4rem;
+        }
+
+        /* Media Queries */
+        @media only screen and (min-width: 1100px) {
+            /* Adjust styles for desktop view */
+            body {
+                /* Add any desktop-specific styles here */
+            }
+
+            .bu-logo img {
+                width: 200px;
+                height: 200px;
+            }
+
+            main h1 {
+                font-size: 2.25rem;
+            }
+
+            .main-container {
+                max-width: 1000px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- BU Logo -->
+        <section class="bu-logo">
+            <img src="../../static/Images/recurringImages/Babcock-University 2.png" alt="BU Logo">
+        </section>
+
+        <!-- Main Section -->
+        <main>
+            <h1>Let's start by creating your <br>account</h1>
+            <div class="main-container">
+                <ol>
+                    <li class="section-heading" onclick="changeStep(1)"><h2>1. Email and Password</h2><div class="underlined-text"></div></li>
+                    <li class="section-heading" onclick="changeStep(2)"><h2>2. School Information</h2><div class="underlined-text"></div></li>
+                    <li class="section-heading" onclick="changeStep(3)"><h2>3. Personal Information</h2><div class="underlined-text"></div></li>
+                </ol>
+
+                <div class="form-container">
+                    <!-- Step 1: Email and Password -->
+                    <div class="step active" id="step1">
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" id="passwordField" placeholder="Enter your password" oninput="checkPasswordCriteria()">
+                        </div>
+
+                        <div class="checkbox">
+                            <div class="checkbox-group">
+                                <label class="container">
+                                    At least one (1) uppercase character
+                                    <input type="checkbox" id="uppercaseCheckbox" disabled>
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="container">
+                                    At least one (1) lowercase character
+                                    <input type="checkbox" id="lowercaseCheckbox" disabled>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">
+                                    At least eight (8) characters
+                                    <input type="checkbox" id="lengthCheckbox" disabled>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <label class="container">
+                                    At least one (1) special character
+                                    <input type="checkbox =" id="specialCharCheckbox" disabled>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">
+                                    At least one (1) digit
+                                    <input type="checkbox" id="digitCheckbox" disabled>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: School Information -->
+                    <div class="step" id="step2">
+                        <div class="form-group">
+                            <label>School Name:</label>
+                            <input type="text" placeholder="Enter your school name">
+                        </div>
+                        <div class="form-group">
+                            <label>School Address:</label>
+                            <input type="text" placeholder="Enter your school address">
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Personal Information -->
+                    <div class="step" id="step3">
+                        <div class="form-group">
+                            <label>First Name:</label>
+                            <input type="text" placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name:</label>
+                            <input type="text" placeholder="Enter your last name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number:</label>
+                            <input type="tel" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button Container -->
+                <div class="btn-container">
+                    <button onclick="prevStep()">Previous</button>
+                    <button onclick="nextStep()">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let currentStep = 1;
+    
+        function nextStep() {
+            const totalSteps = 3;
+    
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                updateSectionHeading();
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+    
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                updateSectionHeading();
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+    
+        function updateSectionHeading() {
+            for (let i = 1; i <= 3; i++) {
+                const sectionHeading = document.querySelector(`.section-heading:nth-child(${i})`);
+                const isCurrentStep = i === currentStep;
+    
+                sectionHeading.querySelector('h2').style.color = isCurrentStep ? 'black' : '#888';
+                sectionHeading.querySelector('.underlined-text').style.borderColor = isCurrentStep ? 'black' : '#ccc';
+                sectionHeading.style.fontWeight = isCurrentStep ? 'bold' : 'normal';
+            }
+        }
+    
+        updateSectionHeading();
+    </script>
+    
+</body>
+
+</html>
+
+

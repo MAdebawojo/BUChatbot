@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Sign-Up Page</title>
+    <link rel="stylesheet" href="../../static/signupPage/css/customCheckbox.css">
+    <link rel="stylesheet" href="../../static/signupPage/css/customRadioButton.css">
+
+    <style>
+        @font-face 
+        {
+            font-family: 'Satoshi';
+            src: url('../../Satoshi_Complete/Fonts/Variable/Satoshi-Variable.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Satoshi';
+            margin: 0 2em 0 2em;
+        }
+
+        .underlined-text {
+            display: inline-block;
+            border-bottom: 2px solid black;
+            margin: 1em 0 2em 0;
+        }
+
+        .bu-logo {
+            width: 100%;
+            padding: 4em 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bu-logo img {
+            /* width: 39px;
+            height: 41px; */
+        }
+
+        .form-text-box {
+            position: relative;
+        }
+
+        .form-text-box .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 40%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        h1 {
+            color: hsl(0, 0%, 3%);
+            font-family: Satoshi;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        h2 {
+            color: #070707;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-top: 3em;
+        }
+
+        h3 {
+            color: #070707;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-bottom: 1em;
+        }
+
+        main {
+            /* background-color: red; */
+        }
+
+        .form-text-box input,
+        select {
+            width: 100%;
+            margin-bottom: 2em;
+            padding: 2em 0;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+
+        .form-text-box input::placeholder {
+            padding: 2em;
+        }
+
+        .flex-rad-btn {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        .btn-flex {
+            text-align: right;
+            padding: 3em 0;
+        }
+
+        button {
+            border-radius: 8px;
+            background: #020167;
+            padding: 0.938em 1.563em;
+        }
+
+        a {
+            color: #F2F2F6;
+            font-family: Satoshi;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Multi-Step Styles */
+        .multistep {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+            list-style: none;
+            padding: 0;
+            position: relative;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            font-weight: 500;
+            color: #888;
+        }
+
+        .step.active {
+            color: #020167;
+            font-weight: bold;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            width: calc(100% - 20px); /* Adjusted the width to leave space for the step number */
+            height: 2px;
+            background-color: #ddd;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+
+        @media only screen and (min-width: 1100px) {
+            .wrapper {}
+
+            body {
+                /* height: 100dvh; */
+            }
+
+            .bu-logo img {
+                width: 200px;
+                height: 200px;
+            }
+
+            main h1 {
+                color: #070707;
+                text-align: center;
+                font-family: Satoshi;
+                font-size: 2.25rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+
+            main br {
+                display: none;
+            }
+
+            .multistep {
+                margin-top: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- BU Logo -->
+        <section class="bu-logo">
+            <img src="../../static/Images/recurringImages/Babcock-University 2.png" alt="BU Logo">
+        </section>
+        
+        <!-- Main Section -->
+        <main>
+            <h1>Let's start by creating your <br>account</h1>
+
+            <!-- Multi-Step Section -->
+            <ul class="multistep">
+                <li class="step active">1. Email and Password</li>
+                <li class="step">2. School Information</li>
+                <li class="step">3. Personal Information</li>
+            </ul>
+
+            <!-- Email and Password Section -->
+            <section class="form-section">
+                <h2><span class="underlined-text">Email Address and Password</span></h2>
+            
+                <div class="form-text-box">
+                    <input type="email" placeholder="Email Address">
+                </div>
+
+                <div class="form-text-box">
+                    <input type="password" id="passwordField" placeholder="Password" oninput="checkPasswordCriteria()">
+                    <span class="password-toggle" onclick="togglePasswordVisibility('passwordField')">👁️</span>
+                </div>
+
+                <label class="container">
+                    At least one (1) uppercase character
+                    <input type="checkbox" id="uppercaseCheckbox" disabled>
+                    <span class="checkmark"></span>
+                </label>
+
+                <!-- ... Rest of your checkboxes ... -->
+
+            </section>
+
+            <!-- School Information Section -->
+            <section class="form-section">
+                <h2><span class="underlined-text">School Information</span></h2>
+            
+                <!-- ... Rest of School Information ... -->
+
+            </section>
+
+            <!-- Personal Information Section -->
+            <section class="form-section">
+                <h2><span class="underlined-text">Personal Information</span></h2>
+                <div class="form-text-box">
+                    <h3>Username:</h3>
+                    <input type="text" placeholder="Enter Username">
+                </div>
+            </section>
+
+            <!-- Finish Button -->
+            <div class="btn-flex">
+                <button><a href="#">Finish</a></button>
+            </div>
+            
+        </main>
+    </div>
+   
+    <script src="../../static/loginPage/js/passwordToggle.js"></script>
+
+    <script>
+        function checkPasswordCriteria() {
+            // Get the password input element
+            const passwordField = document.getElementById('passwordField');
+
+            // Check the criteria and update checkboxes accordingly
+            document.getElementById('uppercaseCheckbox').checked = /[A-Z]/.test(passwordField.value);
+            document.getElementById('lowercaseCheckbox').checked = /[a-z]/.test(passwordField.value);
+            document.getElementById('specialCharCheckbox').checked = /[^A-Za-z0-9]/.test(passwordField.value);
+            document.getElementById('numberCheckbox').checked = /\d/.test(passwordField.value);
+            document.getElementById('lengthCheckbox').checked = passwordField.value.length >= 8;
+        }
+    </script>
+</body>
+</html>

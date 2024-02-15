@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive HTML Loader</title>
+</head>
+
+<body>
+    <div id="dynamicContent"></div>
+
+    <script>
+        // Function to fetch and load HTML content
+        const loadHTML = (url) => {
+            const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+            // Determine the HTML and script source based on the screen width
+            let htmlURL, scriptSrc;
+            if (screenWidth >= 1100) {
+                htmlURL = 'testing4.html';
+                scriptSrc = 'mobileSignUp.js';
+            } else {
+                htmlURL = 'signupPage.html';
+                scriptSrc = 'desktopSignUp.js';
+            }
+
+            fetch(htmlURL)
+                .then(response => response.text())
+                .then(html => {
+                    document.body.innerHTML = html;
+                    loadScript(scriptSrc); // Load the appropriate script
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        };
+
+        // Function to load the script
+        const loadScript = (scriptSrc) => {
+            const script = document.createElement('script');
+            script.src = scriptSrc;
+            document.body.appendChild(script);
+        };
+
+        // Function to handle window resize event
+        const handleResize = () => {
+            loadHTML(); // Load HTML and script based on the current screen width
+        };
+
+        // Initial load on page load
+        window.onload = () => {
+            handleResize();
+
+            // Attach the handleResize function to the window resize event
+            window.addEventListener('resize', () => {
+                console.log('Handling resize event...');
+                handleResize();
+            });
+        };
+    </script>
+</body>
+
+</html>

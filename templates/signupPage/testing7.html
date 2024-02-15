@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/signupPage/css/customCheckbox.css">
+    <link rel="stylesheet" href="../../static/signupPage/css/customRadioButton.css">
+    <link rel="stylesheet" href="../../static/signupPage/css/mobileSignUp.css"> 
+    <link rel="stylesheet" href="../../static/signupPage/css/desktopSignUp.css">
+
+
+    <style>
+        .mobile-view {
+            display: block;
+        }
+
+        .desktop-view {
+            display: none;
+        }
+
+        @media only screen and (min-width: 1100px) {
+            .mobile-view {
+                display: none;
+            }
+
+            .desktop-view {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Mark Up -->
+    <div class="mobile-view">
+        <div class="mobile-wrapper">
+            <!-- BU Logo -->
+            <section class="mobile-bu-logo">
+                <img src="../../static/Images/recurringImages/Babcock-University 2.png" alt="BU Logo">
+            </section>
+            
+            <!-- Main Section -->
+            <main>
+                <h1>Let's start by creating your <br>account</h1>
+    
+                <!-- Email and Password Section -->
+                <section class="mobile-form-section">
+                    <h2><span class="mobile-underlined-text">Email Address and Password</span></h2>
+                
+                    <div class="mobile-form-text-box">
+                        <input type="email" placeholder="Email Address">
+                    </div>
+    
+                    <div class="mobile-form-text-box">
+                        <input type="password" id="passwordField" placeholder="Password" oninput="checkPasswordCriteria()">
+                        <span class="mobile-password-toggle" onclick="togglePasswordVisibility('passwordField')">👁️</span>
+                    </div>
+    
+                    <label class="mobile-container">
+                        At least one (1) uppercase character
+                        <input type="checkbox" id="mobile-uppercaseCheckbox" disabled>
+                        <span class="mobile-checkmark"></span>
+                    </label>
+    
+                    <label class="mobile-container">
+                        At least one (1) lowercase character
+                        <input type="checkbox" id="mobile-lowercaseCheckbox" disabled>
+                        <span class="mobile-checkmark"></span>
+                    </label>
+    
+                    <label class="mobile-container">
+                        At least one (1) special character
+                        <input type="checkbox" id="mobile-specialCharCheckbox" disabled>
+                        <span class="mobile-checkmark"></span>
+                    </label>
+    
+                    <label class="mobile-container">
+                        At least one (1) number
+                        <input type="checkbox" id="mobile-numberCheckbox" disabled>
+                        <span class="mobile-checkmark"></span>
+                    </label>
+    
+                    <label class="mobile-container">
+                        At least eight (8) characters
+                        <input type="checkbox" id="mobile-lengthCheckbox" disabled>
+                        <span class="mobile-checkmark"></span>
+                    </label>
+                </section>
+    
+                <!-- School Information Section -->
+                <section class="mobile-form-section">
+                    <h2><span  class="mobile-underlined-text">School Information</span></h2>
+                
+                    <!-- School Name -->
+                    <label class="mobile-form-text-box">
+                        <h3>School:</h3>
+                        <select>
+                            <option>School of Computing and Engineering Sciences</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>              
+                    </label>
+    
+                    <!-- Department Name -->
+                    <label class="mobile-form-text-box">
+                        <h3>Department:</h3>
+                        <select>
+                            <option>Computer Science</option>
+                            <option>Computer Information Systems</option>
+                            <option>Software Engineering</option>
+                            <option>Computer Technology</option>
+                            <option>Information Technology</option>
+                        </select> 
+                    </label>
+                
+                    <!-- Level -->
+                    <div class="mobile-level">
+                        <h3>Level:</h3>
+                        <div class="mobile-flex-rad-btn">
+                            <label class="mobile-custom-radio"> 100 Level
+                                <input type="radio" checked="checked" name="mobile-custom-radio">
+                                <span class="mobile-custom-radio-checkmark"></span>
+                            </label>
+                            
+                            <label class="mobile-custom-radio"> 200 Level
+                                <input type="radio" name="mobile-custom-radio">
+                                <span class="mobile-custom-radio-checkmark"></span>
+                            </label>
+                            
+                            <label class="mobile-custom-radio"> 300 Level
+                                <input type="radio" name="mobile-custom-radio">
+                                <span class="mobile-custom-radio-checkmark"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="mobile-flex-rad-btn">
+                            <label class="mobile-custom-radio"> 400 Level
+                                <input type="radio" name="mobile-custom-radio">
+                                <span class="mobile-custom-radio-checkmark"></span>
+                            </label>
+                            
+                            <label class="mobile-custom-radio"> 500 Level
+                                <input type="radio" name="mobile-custom-radio">
+                                <span class="mobile-custom-radio-checkmark"></span>
+                            </label>
+                            
+                            <label class="mobile-custom-radio"> 600 Level
+                                <input type="radio" name="mobile-custom-radio">
+                                <span class="mobile-custom-radio-checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+    
+                <!-- Personal Information Section -->
+                <section class="mobile-form-section">
+                    <h2><span  class="mobile-underlined-text">Personal Information</span></h2>
+                    <div class="mobile-form-text-box">
+                        <h3>Username:</h3>
+                        <input type="text" placeholder="Enter Username">
+                    </div>
+                </section>
+    
+                <div class="mobile-btn-flex">
+                    <button><a href="#">Finish</a></button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Desktop Mark Up -->
+    <div class="desktop-view">
+        <div class="desktop-wrapper">
+            <!-- BU Logo -->
+            <section class="desktop-bu-logo">
+                <img src="../../static/Images/recurringImages/Babcock-University 2.png" alt="BU Logo">
+            </section>
+            
+            <!-- Main Section -->
+            <main>
+                <h1>Let's start by creating your <br>account</h1>
+                <div class="desktop-main-container">
+                    <ol>
+                        <li class="desktop-section-heading" onclick="changeStep(1)"><h2>1. Email and Password</h2><div class="desktop-underlined-text"></div></li>
+                        <li class="desktop-section-heading" onclick="changeStep(2)"><h2>2. School Information</h2><div class="desktop-underlined-text"></div></li>
+                        <li class="desktop-section-heading" onclick="changeStep(3)"><h2>3. Personal Information</h2><div class="desktop-underlined-text"></div></li>
+                    </ol>
+                
+                    <div class="desktop-form-container">
+                        <!-- Step 1: Email and Password -->
+                        <div class="desktop-step active " id="desktop-step1">
+                            <div class="desktop-form-group">
+                                <label>Email:</label>
+                                <input type="email" placeholder="Enter your email">
+                            </div>
+                            <div class="desktop-form-group">
+                                <label>Password:</label>
+                                <input type="password" id="desktop-passwordField" placeholder="Enter your password" oninput="checkPasswordCriteria()" >
+                            </div>
+                            
+                    
+                            <div class="desktop-checkbox">
+                                <div class="desktop-checkbox-group">
+                                    <label class="desktop-container">
+                                        At least one (1) uppercase character
+                                        <input type="checkbox" id="desktop-uppercaseCheckbox" disabled>
+                                        <span class="desktop-checkmark"></span>
+                                    </label>
+                        
+                                    <label class="desktop-container">
+                                        At least one (1) lowercase character
+                                        <input type="checkbox" id="desktop-lowercaseCheckbox" disabled>
+                                        <span class="desktop-checkmark"></span>
+                                    </label>
+                                    <label class="desktop-container">
+                                        At least eight (8) characters
+                                        <input type="checkbox" id="desktop-lengthCheckbox" disabled>
+                                        <span class="desktop-checkmark"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="desktop-checkbox-group">
+                                    <label class="desktop-container">
+                                        At least one (1) special character
+                                        <input type="checkbox" id="desktop-specialCharCheckbox" disabled>
+                                        <span class="desktop-checkmark"></span>
+                                    </label>
+                        
+                                    <label class="desktop-container">
+                                        At least one (1) number
+                                        <input type="checkbox" id="desktop-numberCheckbox" disabled>
+                                        <span class="desktop-checkmark"></span>
+                                    </label>
+                                </div>
+                                
+                              
+                            </div>
+                            <div class="desktop-btn-container">
+                                <button onclick="desktopNextStep(1)">Next</button>
+                            </div>
+                        </div>
+                    
+                        <!-- Step 2: School Information -->
+                        <div class="desktop-step" id="desktop-step2">
+                            <div class="desktop-form-group">
+                                <label>School:</label>
+                                <input type="text" placeholder="Enter your school">
+                            </div>
+                            <div class="desktop-form-group">
+                                <label>Department:</label>
+                                <input type="text" placeholder="Enter your department">
+                            </div>
+                    
+                            <!-- Level -->
+                            <div class="desktop-level">
+                                <h3>Level:</h3>
+                                <div class="desktop-flex-rad-btn">
+                                    <label class="desktop-custom-radio"> 100 Level
+                                        <input type="radio" checked="checked" name="desktop-custom-radio">
+                                        <span class="desktop-custom-radio-checkmark"></span>
+                                    </label>
+                                    
+                                    <label class="desktop-custom-radio"> 200 Level
+                                        <input type="radio" name="desktop-custom-radio">
+                                        <span class="desktop-custom-radio-checkmark"></span>
+                                    </label>
+                                    
+                                    <label class="desktop-custom-radio"> 300 Level
+                                        <input type="radio" name="desktop-custom-radio">
+                                        <span class="desktop-custom-radio-checkmark"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="desktop-flex-rad-btn">
+                                    <label class="desktop-custom-radio"> 400 Level
+                                        <input type="radio" name="desktop-custom-radio">
+                                        <span class="desktop-custom-radio-checkmark"></span>
+                                    </label>
+                                    
+                                    <label class="desktop-custom-radio"> 500 Level
+                                        <input type="radio" name="desktop-custom-radio">
+                                        <span class="desktop-custom-radio-checkmark"></span>
+                                    </label>
+                                    
+                                    <label class="desktop-custom-radio"> 600 Level
+                                        <input type="radio" name="desktop-custom-radio">
+                                        <span class="desktop-custom-radio-checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="desktop-btn-container">
+                                <button onclick="desktopPrevStep(2)">Previous</button>
+                                <button onclick="desktopNextStep(2)">Next</button>
+                            </div>
+                        </div>
+                    
+                        <!-- Step 3: Personal Information -->
+                        <div class="desktop-step" id="desktop-step3">
+                            <div class="desktop-form-group">
+                                <label>Username:</label>
+                                <input type="text" placeholder="Enter your username">
+                            </div>
+                            <div class="desktop-btn-container">
+                                <button onclick="desktopPrevStep(3)">Previous</button>
+                                <button onclick="desktopFinish()">Finish</button>
+                            </div>
+                            
+                        </div>
+                      
+                        </div>
+                    
+                    </div>
+                   
+                </div>
+                
+            </main>
+        </div>
+    </div>
+
+    <script src="desktopSignUp.js"></script>
+    <script src="mobileSignUp.js"></script>
+    <!-- <script src="../../static/loginPage/js/passwordToggle.js"></script> -->
+
+    <!-- Add your JavaScript functions here -->
+
+</body>
+</html>
+

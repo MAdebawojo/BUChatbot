@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Textarea</title>
+    <style type="text/css">
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .textarea-container {
+            max-width: 900px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        textarea {
+            width: calc(100% - 20px);
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+            resize: none;
+            overflow-y: hidden;
+            min-height: 50px;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+
+        .submit-input {
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            max-width: 30px; 
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="textarea-container">
+        <textarea id="resizableTextarea" placeholder="Ask me anything..."></textarea>
+        <img src="../static/chatbot/userChatbot/img/Hicon/Linear/Vector.svg" class="submit-input">
+    </div>
+
+    <script>
+        const textarea = document.getElementById('resizableTextarea');
+
+        textarea.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+
+            // Set a maximum height to the textarea
+            const maxHeight = 200;
+            if (this.scrollHeight > maxHeight) {
+                this.style.overflowY = 'scroll';
+                this.style.height = maxHeight + 'px';
+            } else {
+                this.style.overflowY = 'hidden';
+            }
+        });
+
+        // Set initial height
+        textarea.style.height = '80px';
+    </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Textarea</title>
+    <style type="text/css">
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .textarea-container {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+            resize: none;
+            overflow-y: hidden;
+            min-height: 50px;
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="textarea-container">
+        <textarea id="resizableTextarea" placeholder="Ask me anything..."></textarea>
+        <img src="../static/chatbot/userChatbot/img/Hicon/Linear/Vector.svg">
+    </div>
+
+    <script>
+        const textarea = document.getElementById('resizableTextarea');
+
+        textarea.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+
+            // Set a maximum height to the textarea
+            const maxHeight = 200;
+            if (this.scrollHeight > maxHeight) {
+                this.style.overflowY = 'scroll';
+                this.style.height = maxHeight + 'px';
+            } else {
+                this.style.overflowY = 'hidden';
+            }
+        });
+
+        // Set initial height
+        textarea.style.height = '80px';
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .ellipsis-container {
+            position: relative;
+            max-width: 150px; /* Adjust the maximum width as needed */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: inline-block; /* Added display property */
+        }
+
+        .ellipsis-tooltip {
+            position: absolute;
+            top: -30px; /* Adjust the distance above the ellipsis */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .ellipsis-container:hover .ellipsis-tooltip {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ellipsis-container">
+        This is a long label that will be truncated with an ellipsis.
+        <div class="ellipsis-tooltip">more</div>
+    </div>
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .user-circle {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="user-circle">JD</div>
+</body>
+</html> -->
