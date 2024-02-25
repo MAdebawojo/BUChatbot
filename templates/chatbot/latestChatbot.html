@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="../../static/chatbot/userChatbot/css/styles.css"/>
+    <style type="text/css"></style>
+</head>
+<body>
+<div class="wrapper">
+    <section class="sidebar">
+        <div class="new-chat-btn" id="new-chat-btn">
+            <p>New Chat</p>
+        </div>
+        <div class="recent-chats" id="recent-chats"></div>
+        <div class="settings">
+            <div class="user-circle">AD</div>
+            <p class="username">Mosopefoluwa Adebawojo</p>
+        </div>
+    </section>
+    <section class="main-bar">
+        <div class="top-section">
+            <img src="../../static/Images/recurringImages/Babcock-University 2.png"/>
+            <p>BU_Chatbot</p>
+        </div>
+        <div class="chat-area" id="chatArea"></div>
+        <div class="textarea-container">
+            <textarea id="resizableTextarea" placeholder="Ask me anything..."></textarea>
+            <img src="../../static/chatbot/userChatbot/img/Hicon/Linear/Vector.svg" class="text-input"/>
+        </div>
+    </section>
+</div>
+
+<script>
+    const url = 'http://localhost:5005/webhooks/rest/webhook';
+    const chatArea = document.getElementById("chatArea");
+    const textInput = document.getElementById("resizableTextarea");
+    const newChatBtn = document.getElementById("new-chat-btn");
+    const recentChats = document.getElementById("recent-chats");
+
+    const chats = [];
+
+      /*
+      [
+        {
+            userId: {
+                type: mongoose.Types.ObjectId,
+                rel: "Users",
+                required: true,
+            },
+            id: ObjectId("..........."),
+            title: ".........",
+            content: [
+                {sender: "ai", text: "Hello"},
+                {sender: "human", text: "Hi. My name is Mosope."}
+            ]
+        }
+      ]
+
+      await Chats.find({userId: id}, {userId: 0})
+      */
+
+     //   New chat button event listener
+    newChatBtn.addEventListener("click", () => {
+        const newChat = document.createElement("p");
+        newChat.textContent = "New chat";
+        newChat.style.color = "white";
+        recentChats.prepend(newChat);
+        introScreen();
+        textInput.focus();
+      });
+
+    function introScreen() {
+        chatArea.innerHTML = `<div class="intro-container" id="intro-container">
+            <h2>Hello Tanny</h2>
+            <p>Tell me what you need help with or make a selection.</p>
+            <div>
+              <div class="intro-highlight-container">
+                <h3>BUSA</h3>
+                <p>Fintech week</p>
+                <p>Fashion show</p>
+                <p>Games night</p>
+              </div>
+              <div>
+                <div class="intro-highlight-container">
+                  <p>TechXplore: The BUCC Convention 2023</p>
+                </div>
+                <div class="intro-highlight-container">
+                  <p>2023/2024 School Fees and calendar</p>
+                </div>
+              </div>
+            </div>
+          </div>`;
+      }
+    introScreen(); 
+
+    
+    function submitChat() {
+        const message = textInput.value.trim();
+
+        if (message !== "") {
+            addMessage("user", message);
+
+            const data = {
+                message: message
+            };
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+
+            fetch(url, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response:', data);
+                    const botResponse = data[0]['text'];
+                    addMessage("bot", botResponse);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    addMessage("bot", "Sorry, something went wrong. Please try again later.");
+                });
+
+            textInput.value = "";
+        }
+    }
+
+    function addMessage(sender, message) {
+        if (document.getElementById("intro-container")) chatArea.innerHTML = "";
+
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message", sender === "user" ? "user-message" : "bot-message");
+        messageElement.classList.add("message-style");
+        // Create a logo and label container
+        const logoLabelContainer = document.createElement("div");
+        logoLabelContainer.classList.add("logo-label-container");
+
+        // Create a logo element
+        const logoElement = document.createElement("div");
+        logoElement.classList.add("chatarea-logo");
+        // Set the source of the logo based on the sender
+        if (sender === "user") {
+          // If the sender is the user, use the user-circle div
+          logoElement.classList.add("chatarea-user-circle");
+          logoElement.textContent = "AD";
+        } else {
+          // If the sender is BuBot, use an image
+          const bubotLogo = document.createElement("img");
+          bubotLogo.src =
+            "../../static/Images/recurringImages/Babcock-University 2.png";
+          bubotLogo.width = 30;
+          bubotLogo.height = 30;
+          logoElement.appendChild(bubotLogo);
+        }
+
+        // Create a label element
+        const labelElement = document.createElement("div");
+        labelElement.classList.add("logo-label");
+        labelElement.textContent = sender === "user" ? "You" : "BuBot";
+
+        // Append logo and label to the container
+        logoLabelContainer.appendChild(logoElement);
+        logoLabelContainer.appendChild(labelElement);
+
+        // Append the logo and label container to the message element
+        // messageElement.appendChild(logoLabelContainer);
+
+        // Create a text content element for the message text
+        const textContentElement = document.createElement("div");
+        textContentElement.classList.add("text-content");
+        textContentElement.textContent = message;
+
+        // Append text content to the message element
+        messageElement.appendChild(textContentElement);
+
+        chatArea.appendChild(logoLabelContainer);
+        chatArea.appendChild(messageElement);
+
+        // Scroll to the bottom to show the latest message
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }
+    
+
+    textInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            submitChat();
+        }
+    });
+     // Attach the submitChat function to the click event of the submit image
+    document
+        .querySelector(".text-input")
+        .addEventListener("click", submitChat);
+
+      //auto grow textarea
+      const textarea = document.getElementById("resizableTextarea");
+
+      textarea.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+
+        // Set a maximum height to the textarea
+        const maxHeight = 200;
+        if (this.scrollHeight > maxHeight) {
+          this.style.overflowY = "scroll";
+          this.style.height = maxHeight + "px";
+        } else {
+          this.style.overflowY = "hidden";
+        }
+      });
+
+      // Set initial height
+      textarea.style.height = "100px";
+</script>
+</body>
+</html>
